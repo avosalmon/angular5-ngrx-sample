@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { MaterialModule } from './material.module';
+import { AppRoutingModule } from './app-routing.module';
+import { ProductsModule } from './feature/products/products.module';
 import { AppComponent } from './app.component';
 
 
@@ -13,7 +15,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    AppRoutingModule,
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
