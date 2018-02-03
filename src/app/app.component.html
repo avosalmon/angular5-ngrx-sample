@@ -1,6 +1,14 @@
 <mat-toolbar>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <span>Angular5 Ngrx Sample</span>
 </mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    sidenav
+  </mat-sidenav>
+  <mat-sidenav-content>
+    content
+  </mat-sidenav-content>
+</mat-sidenav-container>
