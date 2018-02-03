@@ -1,0 +1,18 @@
+version: '3'
+services:
+  serve:
+    image: node:6.11
+    volumes:
+      - .:/var/app/current:cached
+    working_dir: /var/app/current
+    ports:
+      - "4200:4200"
+    command: yarn run start
+  test:
+    image: node:6.11
+    volumes:
+      - .:/var/app/current:cached
+    working_dir: /var/app/current
+    ports:
+      - "9876:9876"
+    command: yarn run test
