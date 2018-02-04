@@ -1,12 +1,15 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsService } from './services/api/products.service';
+
+import { httpInterceptorProviders } from './services/http/interceptors/index';
+import { ProductsService } from './services/http/products.service';
 
 @NgModule({
   imports: [
     HttpClientModule
   ],
   providers: [
+    httpInterceptorProviders,
     ProductsService
   ]
 })

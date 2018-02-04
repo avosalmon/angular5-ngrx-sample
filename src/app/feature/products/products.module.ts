@@ -15,7 +15,6 @@ import { ProductCreateComponent } from './containers/product-create/product-crea
     ProductListComponent,
     ProductCreateComponent,
     ProductEditComponent
-  ],
-  providers: []
+  ]
 })
 export class ProductsModule {}
