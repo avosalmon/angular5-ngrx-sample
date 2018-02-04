@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { httpInterceptorProviders } from './services/http/interceptors/index';
 import { ProductsService } from './services/http/products.service';
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { ProductsService } from './services/http/products.service';
   ],
   providers: [
     httpInterceptorProviders,
-    ProductsService
+    ProductsService,
+    NotificationService
   ]
 })
 export class CoreModule {

@@ -11,8 +11,8 @@ import { environment } from 'environments/environment';
 
 @Injectable()
 export class UrlInterceptor implements HttpInterceptor {
-
-  intercept(request: HttpRequest<any>, next: HttpHandler) {
+  intercept(request: HttpRequest<any>, next: HttpHandler):
+    Observable<HttpEvent<any>> {
     const url = environment.origin + request.url;
     const updatedRequest = request.clone({
       url: url
