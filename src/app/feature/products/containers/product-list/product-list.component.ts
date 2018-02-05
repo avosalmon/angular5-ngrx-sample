@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
-  template: `
-    <div>Product List</div>
-  `
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent {}
+export class ProductListComponent {
+  products$: Observable<any[]>;
+}

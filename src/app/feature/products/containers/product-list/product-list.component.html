@@ -1,0 +1,17 @@
+<h1>Product List</h1>
+<table>
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>商品名</td>
+      <td>型番</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of (products$ | async)">
+      <td>{{ product.id }}</td>
+      <td>{{ product.product_name }}</td>
+      <td>{{ product.model_number }}</td>
+    </tr>
+  </tbody>
+</table>
