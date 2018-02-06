@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Pagination } from '../../models/pagination';
 
@@ -22,27 +22,27 @@ export class ProductsService {
    * @param fields
    */
   all(pagination?: Pagination, fields?: string): Observable<ProductsResponse> {
-    const url = '/products/?' + this.formatParameters(pagination, fields);
-    return this.http.get<ProductsResponse>(url);
+    const params = this.formatParams(pagination, fields);
+    return this.http.get<ProductsResponse>('/products', { params: params });
   }
 
   /**
-   * Format url params with pagination and fields.
+   * Format http params with pagination and fields.
    *
    * @param pagination
    * @param fields
    */
-  private formatParameters(pagination: Pagination, fields: string): string {
+  private formatParams(pagination?: Pagination, fields?: string): HttpParams {
     pagination = pagination || this.defaultPagination;
 
-    let params = '';
-    params += 'limit=' + encodeURIComponent(String(pagination.limit));
-    params += '&offset=' + encodeURIComponent(String(pagination.offset));
-    params += '&sort=' + encodeURIComponent(pagination.sort);
-    params += '&direction=' + encodeURIComponent(pagination.direction);
+    const params = new HttpParams();
+    params.append('limit', pagination.limit.toString());
+    params.append('offset', pagination.offset.toString());
+    params.append('sort', pagination.sort);
+    params.append('direction', pagination.direction);
 
     if (fields) {
-      params += '&fields=' + encodeURIComponent(fields);
+      params.append('fields', encodeURIComponent(fields));
     }
 
     return params;
