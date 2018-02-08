@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   template: `
-  <div>Login</div>
+    <router-outlet></router-outlet>
   `
 })
 export class LoginComponent { }
