@@ -1,23 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'products', pathMatch: 'full' },
+import { ContainerComponent } from './core/components/container/container.component';
 
-  // Lazy loaded routes
+const routes: Routes = [
   {
-    path: 'products',
-    loadChildren: 'app/feature/products/products.module#ProductsModule'
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full'
   },
-  // {
-  //   path: "suppliers",
-  //   loadChildren: "app/feature/supplier/supplier.module#SupplierModule"
-  // },
-  // {
-  //   path: "purchase-orders",
-  //   loadChildren:
-  //     "app/feature/purchase-order/purchase-order.module#PurchaseOrderModule"
-  // }
+  {
+    path: '',
+    component: ContainerComponent,
+    children: [
+      // Lazy loaded routes
+      {
+        path: 'products',
+        loadChildren: 'app/feature/products/products.module#ProductsModule'
+      },
+      // {
+      //   path: "suppliers",
+      //   loadChildren: "app/feature/supplier/supplier.module#SupplierModule"
+      // },
+      // {
+      //   path: "purchase-orders",
+      //   loadChildren:
+      //     "app/feature/purchase-order/purchase-order.module#PurchaseOrderModule"
+      // }
+    ]
+  },
+  {
+    path: 'login',
+    loadChildren: 'app/feature/login/login.module#LoginModule'
+  }
 ];
 
 @NgModule({
