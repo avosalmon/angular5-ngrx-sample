@@ -18,7 +18,7 @@ export class ProductsEffects {
         .all(null, fields)
         .pipe(
           map((response: ProductsResponse) =>
-            new fromActions.GetProductsSuccess(response)
+            new fromActions.GetProductsSuccess(response.data)
           )
         );
     })

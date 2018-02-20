@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import { ProductsResponse } from 'app/core/services/http/products.service';
 
 export const GET_PRODUCTS = '[Products] Get Products';
 export const GET_PRODUCTS_SUCCESS = '[Products] Get Products Success';
@@ -12,7 +11,7 @@ export class GetProducts implements Action {
 
 export class GetProductsSuccess implements Action {
   readonly type = GET_PRODUCTS_SUCCESS;
-  constructor(public payload: ProductsResponse) { }
+  constructor(public payload: any) { }
 }
 
 export class SearchProducts implements Action {
@@ -21,7 +20,7 @@ export class SearchProducts implements Action {
 
 export class SearchProductsSuccess implements Action {
   readonly type = SEARCH_PRODUCTS_SUCCESS;
-  constructor(public payload: ProductsResponse) { }
+  constructor(public payload: any) { }
 }
 
 // action types

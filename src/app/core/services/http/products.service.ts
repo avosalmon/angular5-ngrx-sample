@@ -50,7 +50,11 @@ export class ProductsService {
 }
 
 export interface ProductsResponse {
-  products: any[];
-  meta: Pagination;
-  schema: any;
+  status: string;
+  message: string;
+  data: {
+    products: any[];
+    meta: Pagination;
+    schema: any;
+  };
 }
