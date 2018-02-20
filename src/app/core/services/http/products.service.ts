@@ -32,17 +32,18 @@ export class ProductsService {
    * @param pagination
    * @param fields
    */
-  private formatParams(pagination?: Pagination, fields?: string): HttpParams {
+  private formatParams(pagination?: Pagination, fields?: string): any {
     pagination = pagination || this.defaultPagination;
 
-    const params = new HttpParams();
-    params.append('limit', pagination.limit.toString());
-    params.append('offset', pagination.offset.toString());
-    params.append('sort', pagination.sort);
-    params.append('direction', pagination.direction);
+    const params: any = {
+      limit: pagination.limit,
+      offset: pagination.offset,
+      sort: pagination.sort,
+      direction: pagination.direction
+    };
 
     if (fields) {
-      params.append('fields', encodeURIComponent(fields));
+      params.fields = fields;
     }
 
     return params;
