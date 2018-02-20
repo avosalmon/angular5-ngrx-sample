@@ -26,13 +26,19 @@ export class ProductsService {
     return this.http.get<ProductsResponse>('/products', { params: params });
   }
 
+  search(query: string, pagination?: Pagination, fields?: string): Observable<ProductsResponse> {
+    const params = this.formatParams(pagination, fields);
+    return this.http.get<ProductsResponse>('/products/search', { params: params });
+  }
+
   /**
    * Format http params with pagination and fields.
    *
    * @param pagination
    * @param fields
+   * @param query
    */
-  private formatParams(pagination?: Pagination, fields?: string): any {
+  private formatParams(pagination?: Pagination, fields?: string, query?: string): any {
     pagination = pagination || this.defaultPagination;
 
     const params: any = {
@@ -44,6 +50,10 @@ export class ProductsService {
 
     if (fields) {
       params.fields = fields;
+    }
+
+    if (query) {
+      params.q = query;
     }
 
     return params;
