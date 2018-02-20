@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { CoreMaterialModule } from './core-material.module';
 import { ContainerComponent } from './components/container/container.component';
-import { httpInterceptorProviders } from './services/http/interceptors/index';
+import { httpInterceptorProviders } from './services/http/interceptors';
 import { ProductsService } from './services/http/products.service';
 import { NotificationService } from './services/notification.service';
 

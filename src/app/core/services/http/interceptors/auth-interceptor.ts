@@ -10,8 +10,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  intercept(request: HttpRequest<any>, next: HttpHandler):
-    Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // TODO: Get token from users service
     const token = 'dummyToken';
     const updatedRequest = request.clone({
