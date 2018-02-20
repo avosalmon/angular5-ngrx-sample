@@ -12,10 +12,24 @@ const fields = 'id,supplier_id,image_uri,product_name,model_number,public_stock,
 export class ProductsEffects {
 
   @Effect()
-  loadProducts$ = this.actions$.ofType(fromActions.GET_PRODUCTS).pipe(
+  getProducts$ = this.actions$.ofType(fromActions.GET_PRODUCTS).pipe(
     switchMap(() => {
       return this.productsService
         .all(null, fields)
+        .pipe(
+          map((response: ProductsResponse) =>
+            new fromActions.GetProductsSuccess(response.data)
+          )
+        );
+    })
+  );
+
+  @Effect()
+  searchProducts$ = this.actions$.ofType(fromActions.SEARCH_PRODUCTS).pipe(
+    map((action: fromActions.SearchProducts) => action.query),
+    switchMap((query) => {
+      return this.productsService
+        .search(query, null, fields)
         .pipe(
           map((response: ProductsResponse) =>
             new fromActions.GetProductsSuccess(response.data)

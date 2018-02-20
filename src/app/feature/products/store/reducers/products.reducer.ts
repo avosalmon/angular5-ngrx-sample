@@ -4,7 +4,6 @@ import * as fromActions from '../actions';
 export interface ProductsState {
   list: any[];
   pagination: Pagination;
-  searching: boolean;
   searchQuery: string;
 }
 
@@ -17,7 +16,6 @@ export const initialState: ProductsState = {
     direction: 'desc',
     total: 0
   },
-  searching: false,
   searchQuery: ''
 };
 
@@ -28,6 +26,13 @@ export function reducer(state = initialState, action: fromActions.ProductsAction
         ...state,
         list: action.payload.products,
         pagination: action.payload.meta
+      };
+    }
+
+    case fromActions.SEARCH_PRODUCTS: {
+      return {
+        ...state,
+        searchQuery: action.query
       };
     }
   }

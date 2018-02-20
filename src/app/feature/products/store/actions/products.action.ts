@@ -16,6 +16,7 @@ export class GetProductsSuccess implements Action {
 
 export class SearchProducts implements Action {
   readonly type = SEARCH_PRODUCTS;
+  constructor(public query: string) { }
 }
 
 export class SearchProductsSuccess implements Action {

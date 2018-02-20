@@ -27,7 +27,7 @@ export class ProductsService {
   }
 
   search(query: string, pagination?: Pagination, fields?: string): Observable<ProductsResponse> {
-    const params = this.formatParams(pagination, fields);
+    const params = this.formatParams(pagination, fields, query);
     return this.http.get<ProductsResponse>('/products/search', { params: params });
   }
 
