@@ -16,6 +16,6 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new fromStore.SearchProducts('iittala'));
+    this.store.dispatch(new fromStore.GetProducts);
   }
 }
