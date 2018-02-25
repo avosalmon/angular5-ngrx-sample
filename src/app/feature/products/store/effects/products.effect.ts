@@ -18,7 +18,7 @@ export class ProductsEffects {
         .all(null, fields)
         .pipe(
           map((response: ProductsResponse) =>
-            new fromActions.GetProductsSuccess(response.data)
+            new fromActions.GetProductsSuccess(response)
           )
         );
     })
@@ -32,7 +32,7 @@ export class ProductsEffects {
         .search(query, null, fields)
         .pipe(
           map((response: ProductsResponse) =>
-            new fromActions.GetProductsSuccess(response.data)
+            new fromActions.GetProductsSuccess(response)
           )
         );
     })

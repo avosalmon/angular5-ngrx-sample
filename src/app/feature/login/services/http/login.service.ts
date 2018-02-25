@@ -1,6 +1,8 @@
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { ApiResponse } from 'app/core/models/api-response';
 
 @Injectable()
 export class LoginService {
@@ -18,7 +20,10 @@ export class LoginService {
       username: username,
       password: password
     };
-    return this.http.post<LoginResponse>('/login', body);
+    return this.http.post<ApiResponse<LoginResponse>>('/login', body)
+              .pipe(
+                map(response => response.data)
+              );
   }
 }
 
