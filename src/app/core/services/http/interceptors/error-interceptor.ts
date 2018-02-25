@@ -18,11 +18,16 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      tap(event => {
-        if (event instanceof HttpErrorResponse) {
-          this.notification.error(event.message);
+      tap(
+        // success response
+        event => {},
+        // error response
+        event => {
+          if (event instanceof HttpErrorResponse) {
+            this.notification.error(event.error.message);
+          }
         }
-      })
+      )
     );
   }
 }
