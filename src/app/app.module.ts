@@ -7,11 +7,16 @@ import { EffectsModule } from '@ngrx/effects';
 
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment } from 'environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
+
+const metaReducers: MetaReducer<any>[] = environment.production
+  ? []
+  : [storeFreeze];
 
 @NgModule({
   declarations: [
@@ -22,7 +27,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.production ? [] : StoreDevtoolsModule.instrument(),
   ],
