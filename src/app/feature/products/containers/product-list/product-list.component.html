@@ -1,17 +1,36 @@
 <h1>Product List</h1>
-<table>
-  <thead>
-    <tr>
-      <td>ID</td>
-      <td>商品名</td>
-      <td>型番</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of (products$ | async)">
-      <td>{{ product.id }}</td>
-      <td>{{ product.product_name }}</td>
-      <td>{{ product.model_number }}</td>
-    </tr>
-  </tbody>
-</table>
+
+<mat-table #table [dataSource]="(products$ | async)"
+  class="example-table" matSort matSortActive="id" matSortDisableClear matSortDirection="desc">
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">ID</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="productName">
+    <mat-header-cell *matHeaderCellDef>商品名</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.product_name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="modelNumber">
+    <mat-header-cell *matHeaderCellDef>型番</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.model_number }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef>価格</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.price }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="publicStock">
+    <mat-header-cell *matHeaderCellDef>ショップ在庫</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.public_stock }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [length]="(page$ | async)?.total" [pageSize]="50">
+</mat-paginator>
