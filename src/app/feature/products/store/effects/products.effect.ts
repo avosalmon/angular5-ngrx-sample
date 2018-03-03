@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { of } from 'rxjs/observable/of';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import { ProductsService, ProductsResponse } from 'app/core/services/http/products.service';
 import * as fromActions from '../actions';
@@ -12,10 +11,10 @@ const fields = 'id,supplier_id,image_uri,product_name,model_number,public_stock,
 export class ProductsEffects {
 
   @Effect()
-  getProducts$ = this.actions$.ofType(fromActions.GET_PRODUCTS).pipe(
+  getProducts$ = this.actions$.pipe(
+    ofType(fromActions.GET_PRODUCTS),
     switchMap(() => {
-      return this.productsService
-        .all(null, fields)
+      return this.productsService.all(null, fields)
         .pipe(
           map((response: ProductsResponse) =>
             new fromActions.GetProductsSuccess(response)
@@ -25,11 +24,11 @@ export class ProductsEffects {
   );
 
   @Effect()
-  searchProducts$ = this.actions$.ofType(fromActions.SEARCH_PRODUCTS).pipe(
+  searchProducts$ = this.actions$.pipe(
+    ofType(fromActions.SEARCH_PRODUCTS),
     map((action: fromActions.SearchProducts) => action.query),
     switchMap((query) => {
-      return this.productsService
-        .search(query, null, fields)
+      return this.productsService.search(query, null, fields)
         .pipe(
           map((response: ProductsResponse) =>
             new fromActions.GetProductsSuccess(response)
