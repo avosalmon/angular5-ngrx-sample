@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // TODO: Get token from users service
-    const token = 'dummyToken';
+    const token = 'Bearer a7widHLcEXF4NlmvuKDeOWxprGi17ygEEwomqMc4f9Us9pkRQH6kJ6fM8Tpo';
     const updatedRequest = request.clone({
       headers: request.headers.set('Authorization', token)
     });

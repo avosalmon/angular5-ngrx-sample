@@ -12,7 +12,7 @@ export class ProductsEffects {
 
   @Effect()
   getProducts$ = this.actions$.pipe(
-    ofType(fromActions.GET_PRODUCTS),
+    ofType<fromActions.GetProducts>(fromActions.GET_PRODUCTS),
     switchMap(() => {
       return this.productsService.all(null, fields)
         .pipe(
@@ -25,10 +25,9 @@ export class ProductsEffects {
 
   @Effect()
   searchProducts$ = this.actions$.pipe(
-    ofType(fromActions.SEARCH_PRODUCTS),
-    map((action: fromActions.SearchProducts) => action.query),
-    switchMap((query) => {
-      return this.productsService.search(query, null, fields)
+    ofType<fromActions.SearchProducts>(fromActions.SEARCH_PRODUCTS),
+    switchMap(action => {
+      return this.productsService.search(action.query, null, fields)
         .pipe(
           map((response: ProductsResponse) =>
             new fromActions.GetProductsSuccess(response)
