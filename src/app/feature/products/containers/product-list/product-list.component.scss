@@ -9,3 +9,9 @@
 .table {
   overflow: auto;
 }
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+}
