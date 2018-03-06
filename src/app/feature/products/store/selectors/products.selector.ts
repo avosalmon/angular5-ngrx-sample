@@ -17,5 +17,5 @@ export const getAllProducts = createSelector(
 
 export const getPage = createSelector(
   getProductsState,
-  (state: fromReducers.ProductsState) => state.pagination
+  (state: fromReducers.ProductsState) => state.page
 );

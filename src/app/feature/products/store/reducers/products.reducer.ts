@@ -1,15 +1,15 @@
-import { Pagination } from 'app/core/models/pagination';
+import { Page } from 'app/core/models/page';
 import * as fromActions from '../actions';
 
 export interface ProductsState {
   list: any[];
-  pagination: Pagination;
+  page: Page;
   searchQuery: string;
 }
 
 export const initialState: ProductsState = {
   list: [],
-  pagination: {
+  page: {
     limit: 50,
     offset: 0,
     sort: 'id',
@@ -25,7 +25,7 @@ export function reducer(state = initialState, action: fromActions.ProductsAction
       return {
         ...state,
         list: action.payload.products,
-        pagination: action.payload.meta
+        page: action.payload.meta
       };
     }
 

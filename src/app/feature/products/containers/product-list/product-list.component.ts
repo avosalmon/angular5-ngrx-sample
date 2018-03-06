@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort } from '@angular/material';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Pagination } from 'app/core/models/pagination';
+import { Page } from 'app/core/models/page';
 import * as fromStore from '../../store';
 
 @Component({
@@ -15,7 +16,10 @@ export class ProductListComponent implements OnInit {
   displayedColumns = ['id', 'product-name', 'model-number', 'price', 'public-stock'];
 
   products$: Observable<any[]>;
-  page$: Observable<Pagination>;
+  page$: Observable<Page>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private store: Store<fromStore.ProductsState>) {
     this.products$ = this.store.pipe(select(fromStore.getAllProducts));
