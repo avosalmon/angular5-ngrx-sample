@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(private store: Store<fromStore.ProductsState>) {
     this.products$ = this.store.pipe(select(fromStore.getAllProducts));
-    this.page$ = this.store.pipe(select(fromStore.getPage));
+    this.page$     = this.store.pipe(select(fromStore.getPage));
   }
 
   ngOnInit() {
