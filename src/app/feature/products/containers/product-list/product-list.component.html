@@ -9,12 +9,12 @@
       <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="productName">
+    <ng-container matColumnDef="product-name">
       <mat-header-cell *matHeaderCellDef>商品名</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.product_name }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="modelNumber">
+    <ng-container matColumnDef="model-number">
       <mat-header-cell *matHeaderCellDef>型番</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.model_number }}</mat-cell>
     </ng-container>
@@ -24,7 +24,7 @@
       <mat-cell *matCellDef="let row">{{ row.price }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="publicStock">
+    <ng-container matColumnDef="public-stock">
       <mat-header-cell *matHeaderCellDef>ショップ在庫</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.public_stock }}</mat-cell>
     </ng-container>

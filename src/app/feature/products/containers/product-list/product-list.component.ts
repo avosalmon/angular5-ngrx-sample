@@ -12,7 +12,7 @@ import * as fromStore from '../../store';
 })
 export class ProductListComponent implements OnInit {
 
-  displayedColumns = ['id', 'productName', 'modelNumber', 'price', 'publicStock'];
+  displayedColumns = ['id', 'product-name', 'model-number', 'price', 'public-stock'];
 
   products$: Observable<any[]>;
   page$: Observable<Pagination>;
