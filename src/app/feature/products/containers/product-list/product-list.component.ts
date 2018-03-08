@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, AfterViewInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatPaginator, MatSort, PageEvent } from '@angular/material';
+import { MatPaginator, MatSort } from '@angular/material';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { debounceTime } from 'rxjs/operators';
