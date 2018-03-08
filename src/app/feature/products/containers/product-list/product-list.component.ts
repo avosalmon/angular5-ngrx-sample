@@ -13,7 +13,7 @@ import * as fromStore from '../../store';
 })
 export class ProductListComponent implements AfterViewInit {
 
-  displayedColumns = ['id', 'product-name', 'model-number', 'price', 'public-stock'];
+  displayedColumns = ['id', 'product_name', 'model_number', 'price', 'public_stock'];
 
   products$: Observable<any[]>;
   page$: Observable<Page>;
@@ -28,6 +28,15 @@ export class ProductListComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     // ViewChild is initialized here.
+    this.getProducts();
+  }
+
+  onSortChange(): void {
+    this.paginator.pageIndex = 0;
+    this.getProducts();
+  }
+
+  onPageChange(): void {
     this.getProducts();
   }
 

@@ -4,30 +4,31 @@
   <mat-table #table class="table" matSort matSortDisableClear
     [dataSource]="(products$ | async)"
     [matSortActive]="page.sort"
-    [matSortDirection]="page.direction">
+    [matSortDirection]="page.direction"
+    (matSortChange)="onSortChange()">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">ID</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="product-name">
-      <mat-header-cell *matHeaderCellDef>商品名</mat-header-cell>
+    <ng-container matColumnDef="product_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>商品名</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.product_name }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="model-number">
-      <mat-header-cell *matHeaderCellDef>型番</mat-header-cell>
+    <ng-container matColumnDef="model_number">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>型番</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.model_number }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef>価格</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>価格</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.price }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="public-stock">
-      <mat-header-cell *matHeaderCellDef>ショップ在庫</mat-header-cell>
+    <ng-container matColumnDef="public_stock">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ショップ在庫</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.public_stock }}</mat-cell>
     </ng-container>
 
@@ -38,6 +39,6 @@
   <mat-paginator [length]="page.total"
                  [pageIndex]="(page.offset / page.limit)"
                  [pageSize]="page.limit"
-                 (page)="getProducts()">
+                 (page)="onPageChange()">
   </mat-paginator>
 </div>
