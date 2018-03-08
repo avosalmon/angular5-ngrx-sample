@@ -40,7 +40,7 @@ export class ProductsService {
   }
 
   /**
-   * Format http params with page and fields.
+   * Format http params.
    *
    * @param page
    * @param fields

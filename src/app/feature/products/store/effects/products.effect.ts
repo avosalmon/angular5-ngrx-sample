@@ -13,8 +13,8 @@ export class ProductsEffects {
   @Effect()
   getProducts$ = this.actions$.pipe(
     ofType<fromActions.GetProducts>(fromActions.GET_PRODUCTS),
-    mergeMap(() => {
-      return this.productsService.all(null, fields)
+    mergeMap(action => {
+      return this.productsService.all(action.payload, fields)
         .pipe(
           map((response: ProductsResponse) =>
             new fromActions.GetProductsSuccess(response)

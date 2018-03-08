@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { Component, ChangeDetectionStrategy, AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, PageEvent } from '@angular/material';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,7 +11,7 @@ import * as fromStore from '../../store';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements AfterViewInit {
 
   displayedColumns = ['id', 'product-name', 'model-number', 'price', 'public-stock'];
 
@@ -26,7 +26,17 @@ export class ProductListComponent implements OnInit {
     this.page$     = this.store.pipe(select(fromStore.getPage));
   }
 
-  ngOnInit() {
-    this.store.dispatch(new fromStore.GetProducts);
+  ngAfterViewInit(): void {
+    // ViewChild is initialized here.
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    this.store.dispatch(new fromStore.GetProducts(
+      this.paginator.pageSize,
+      this.paginator.pageSize * this.paginator.pageIndex,
+      this.sort.active,
+      this.sort.direction
+    ));
   }
 }

@@ -1,8 +1,10 @@
 <h1>Product List</h1>
 
-<div class="table-container">
-  <mat-table #table [dataSource]="(products$ | async)" class="table" matSort matSortActive="id" matSortDisableClear
-    matSortDirection="desc">
+<div class="table-container" *ngIf="(page$ | async) as page">
+  <mat-table #table class="table" matSort matSortDisableClear
+    [dataSource]="(products$ | async)"
+    [matSortActive]="page.sort"
+    [matSortDirection]="page.direction">
 
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">ID</mat-header-cell>
@@ -33,6 +35,9 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <mat-paginator [length]="(page$ | async)?.total" [pageSize]="50">
+  <mat-paginator [length]="page.total"
+                 [pageIndex]="(page.offset / page.limit)"
+                 [pageSize]="page.limit"
+                 (page)="getProducts()">
   </mat-paginator>
 </div>
