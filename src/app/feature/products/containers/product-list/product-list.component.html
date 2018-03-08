@@ -1,6 +1,11 @@
 <h1>Product List</h1>
 
 <div class="table-container" *ngIf="(page$ | async) as page">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput [formControl]="searchQuery" placeholder="検索">
+    </mat-form-field>
+  </div>
   <mat-table #table class="table" matSort matSortDisableClear
     [dataSource]="(products$ | async)"
     [matSortActive]="page.sort"

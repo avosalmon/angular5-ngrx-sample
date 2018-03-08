@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -15,6 +16,7 @@ import { ProductCreateComponent } from './containers/product-create/product-crea
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ProductsMaterialModule,
     ProductsRoutingModule,
     StoreModule.forFeature('products', reducer),
