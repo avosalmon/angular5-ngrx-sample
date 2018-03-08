@@ -13,7 +13,7 @@ import * as fromStore from '../../store';
 })
 export class ProductListComponent implements AfterViewInit {
 
-  displayedColumns = ['id', 'product_name', 'model_number', 'price', 'public_stock'];
+  displayedColumns = ['id', 'product_name', 'model_number', 'price', 'public_stock', 'action'];
 
   products$: Observable<any[]>;
   page$: Observable<Page>;

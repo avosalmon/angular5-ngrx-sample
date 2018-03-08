@@ -32,6 +32,19 @@
       <mat-cell *matCellDef="let row">{{ row.public_stock }}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>アクション</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>編集</button>
+          <button mat-menu-item>削除</button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
