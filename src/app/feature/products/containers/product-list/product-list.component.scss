@@ -8,8 +8,6 @@
   display: flex;
   flex-direction: column;
   max-height: 75vh;
-  // min-width: 300px;
-  // position: relative;
 }
 
 .example-header {
@@ -26,6 +24,7 @@
   overflow: auto;
 }
 
+// fixed table header
 .mat-header-row {
   position: sticky;
   top: 0;
@@ -33,10 +32,19 @@
   z-index: 10;
 }
 
-.mat-column-id {
-  max-width: 64px;
+// horizontal scroll
+.mat-cell, .mat-header-cell {
+  min-width: 300px;
 }
 
-.mat-column-public-stock {
-  max-width: 74px;
+.mat-row, .mat-header-row {
+  min-width: 1800px;
 }
+
+// .mat-column-id {
+//   max-width: 64px;
+// }
+
+// .mat-column-public_stock {
+//   max-width: 92px;
+// }
