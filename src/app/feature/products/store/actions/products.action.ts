@@ -10,13 +10,13 @@ export class GetProducts implements Action {
   readonly type = GET_PRODUCTS;
   readonly payload: Page;
 
-  constructor(limit: number, offset: number, sort: string, direction: string) {
+  constructor(limit: number, offset: number, sort: string, direction: string, total = 0) {
     this.payload = {
       limit: limit,
       offset: offset,
       sort: sort,
       direction: direction,
-      total: 0
+      total: total
     };
   }
 }
