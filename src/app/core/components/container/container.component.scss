@@ -1,3 +1,119 @@
+@import "variables";
+
 .mat-sidenav-content {
   padding: 30px;
+}
+
+.mat-sidenav {
+  background: $sidebar-bg;
+  color: $white;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+}
+
+.sidebar-nav {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: $sidebar-width;
+
+  &::-webkit-scrollbar {
+
+    position: absolute;
+    width: 10px;
+    margin-left: -10px;
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: lighten($sidebar-bg, 5%);
+    border-right: 1px solid darken($sidebar-bg, 5%);
+    border-left: 1px solid darken($sidebar-bg, 5%);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: darken($sidebar-bg, 10%);
+    background-clip: content-box;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1px 2px;
+  }
+}
+
+.nav {
+  .nav-item {
+    .nav-link {
+      display: block;
+      padding: 15px;
+      color: $white;
+      text-decoration: none;
+      background: transparent;
+      transition: background .2s ease-in-out;
+
+      md-icon {
+        margin: 0 0.7rem 0 0;
+        color: $text-muted;
+        vertical-align: middle;
+      }
+
+      span {
+        vertical-align: middle;
+      }
+
+      &:hover {
+        color: $white;
+        background: darken($sidebar-bg, 5%);
+      }
+
+      &.active {
+        background: darken($sidebar-bg, 5%);
+        md-icon {
+          color: $cyan;
+        }
+      }
+
+      &.nav-dropdown-toggle {
+        &::before {
+          position: absolute;
+          top: (.75rem + (1rem / 4));
+          right: 1rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          padding: 0;
+          font-size: 1rem;
+          line-height: (1rem * 3 / 4);
+          text-align: center;
+          content: "\2039";
+          transition: .3s;
+        }
+      }
+    }
+
+    ul {
+      max-height: 0;
+      padding: 0;
+      margin: 0;
+      overflow-y: hidden;
+      transition: max-height .3s ease-in-out;
+
+      li {
+        padding: 0;
+        list-style: none;
+      }
+    }
+
+    &.nav-dropdown.open {
+      background: darken($sidebar-bg, 3%);
+
+      > ul, > ol {
+        max-height: 1000px;
+      }
+
+      > .nav-link.nav-dropdown-toggle::before {
+        transform: rotate(-90deg);
+      }
+    }
+  }
 }

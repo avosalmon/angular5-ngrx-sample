@@ -1,12 +1,29 @@
 <mat-toolbar>
   <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
+    <ng-container *ngIf="sidenav.opened; then close; else open"></ng-container>
+    <ng-template #open><mat-icon>menu</mat-icon></ng-template>
+    <ng-template #close><mat-icon>clear</mat-icon></ng-template>
   </button>
   <span>Angular5 Ngrx Sample</span>
 </mat-toolbar>
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side">
-    sidenav
+  <mat-sidenav #sidenav mode="over">
+    <nav class="sidebar-nav">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/products">
+            <mat-icon>shopping_basket</mat-icon>
+            <span>商品管理</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/">
+            <mat-icon>store</mat-icon>
+            <span>仕入先管理</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
