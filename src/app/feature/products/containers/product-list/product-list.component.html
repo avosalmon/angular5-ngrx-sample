@@ -16,6 +16,14 @@
       <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="image_uri">
+      <mat-header-cell *matHeaderCellDef>商品画像</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <!-- TODO: abstract to "product-image" component -->
+        <img *ngIf="row.image_uri" class="product-image" src="https://s3-ap-northeast-1.amazonaws.com/{{ row.image_uri }}">
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="product_name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>商品名</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.product_name }}</mat-cell>
@@ -26,14 +34,24 @@
       <mat-cell *matCellDef="let row">{{ row.model_number }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>価格</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.price }}</mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="public_stock">
       <mat-header-cell *matHeaderCellDef mat-sort-header>ショップ在庫</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.public_stock }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="min_lot">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>最低ロット</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.min_lot }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="min_stock">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>最低在庫</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.min_stock }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="order_unit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>発注単位</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.order_unit }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
