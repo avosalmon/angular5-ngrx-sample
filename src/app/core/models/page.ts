@@ -3,5 +3,5 @@ export interface Page {
   offset: number;
   sort: string;
   direction: string;
-  total: number;
+  total?: number;
 }

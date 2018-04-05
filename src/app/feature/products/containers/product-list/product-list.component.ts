@@ -16,7 +16,15 @@ import * as fromStore from '../../store';
 export class ProductListComponent implements AfterViewInit {
 
   displayedColumns = [
-    'id', 'image_uri', 'product_name', 'model_number', 'public_stock', 'min_lot', 'min_stock', 'order_unit', 'action'
+    'id',
+    'image_uri',
+    'product_name',
+    'model_number',
+    'public_stock',
+    'min_lot',
+    'min_stock',
+    'order_unit',
+    'action'
   ];
 
   searchQuery: FormControl;
@@ -49,12 +57,12 @@ export class ProductListComponent implements AfterViewInit {
   }
 
   private getProducts(): void {
-    this.store.dispatch(new fromStore.GetProducts(
-      this.paginator.pageSize,
-      this.paginator.pageSize * this.paginator.pageIndex,
-      this.sort.active,
-      this.sort.direction
-    ));
+    this.store.dispatch(new fromStore.GetProducts({
+      limit: this.paginator.pageSize,
+      offset: this.paginator.pageSize * this.paginator.pageIndex,
+      sort: this.sort.active,
+      direction: this.sort.direction
+    }));
   }
 
   private searchProducts(): void {

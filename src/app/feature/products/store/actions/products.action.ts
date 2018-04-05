@@ -8,17 +8,7 @@ export const SEARCH_PRODUCTS_SUCCESS = '[Products] Search Products Success';
 
 export class GetProducts implements Action {
   readonly type = GET_PRODUCTS;
-  readonly payload: Page;
-
-  constructor(limit: number, offset: number, sort: string, direction: string, total = 0) {
-    this.payload = {
-      limit: limit,
-      offset: offset,
-      sort: sort,
-      direction: direction,
-      total: total
-    };
-  }
+  constructor(public payload: Page) { }
 }
 
 export class GetProductsSuccess implements Action {
