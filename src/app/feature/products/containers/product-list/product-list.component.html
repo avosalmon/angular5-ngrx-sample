@@ -1,10 +1,18 @@
-<h1 class="page-title">商品一覧</h1>
-<div class="table-container" *ngIf="(page$ | async) as page">
-  <div class="example-header">
-    <mat-form-field>
+<div class="page-header">
+  <h1 class="page-title">商品一覧</h1>
+  <div class="actions">
+    <!-- <mat-form-field>
       <input matInput [formControl]="searchQuery" placeholder="検索">
-    </mat-form-field>
+    </mat-form-field> -->
+    <button mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
+</div>
+<div class="table-container" *ngIf="(page$ | async) as page">
   <mat-table #table class="table" matSort matSortDisableClear
     [dataSource]="(products$ | async)"
     [matSortActive]="page.sort"
